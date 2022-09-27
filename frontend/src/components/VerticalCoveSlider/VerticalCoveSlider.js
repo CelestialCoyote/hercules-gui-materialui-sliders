@@ -8,7 +8,7 @@ const VerticalCoveSlider = ({ coveColor, color, setRed, setGrn, setBlu }) => {
 
     const handleSliderChange = (event, newValue) => {
         setValue(newValue);
-        //console.log(`${coveColor} sliderValue: ${value}`);
+        console.log(`${coveColor} sliderValue: ${value}`);
         if (coveColor === "red") {
             setRed(newValue);
         } else if (coveColor === "grn") {
@@ -22,7 +22,7 @@ const VerticalCoveSlider = ({ coveColor, color, setRed, setGrn, setBlu }) => {
     return (
 
         <div className="cove-slider-group">
-            <label className="cove-text">{ coveColor }</label>
+            <label className="cove-text">{coveColor}</label>
 
             <Slider
                 sx={{
@@ -45,9 +45,10 @@ const VerticalCoveSlider = ({ coveColor, color, setRed, setGrn, setBlu }) => {
                     },
                 }}
                 orientation="vertical"
-                value={typeof value === 'number' ? value : 0}
+                min={0}
+                max={255}
+                step={1}
                 onChange={handleSliderChange}
-                aria-labelledby="input-slider"
             />
 
             <label className="cove-text">{value}</label>
