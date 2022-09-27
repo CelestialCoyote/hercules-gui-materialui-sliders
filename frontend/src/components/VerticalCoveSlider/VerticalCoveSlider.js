@@ -8,7 +8,12 @@ const VerticalCoveSlider = ({ coveColor, color, setRed, setGrn, setBlu }) => {
 
     const handleSliderChange = (event, newValue) => {
         setValue(newValue);
+
+        // Console.log changes as slider moves on selected color.
         console.log(`${coveColor} sliderValue: ${value}`);
+
+        // Want to update the state of each color to be sent to backend.
+        // Not currently working.
         if (coveColor === "red") {
             setRed(newValue);
         } else if (coveColor === "grn") {

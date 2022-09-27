@@ -9,6 +9,8 @@ const Hercules = () => {
     const [grn, setGrn] = useState(0);
     const [blu, setBlu] = useState(0);
 
+    // Console log out when color values have been changed.
+    // Not working currently.
     useEffect(() => {
         console.log(`Red: ${red}, Green: ${grn}, Blue: ${blu}`);
     }, [red, grn, blu]);
