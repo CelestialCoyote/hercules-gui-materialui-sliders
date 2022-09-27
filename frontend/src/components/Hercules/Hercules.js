@@ -1,68 +1,30 @@
-import * as React from 'react';
-import { styled } from '@mui/material/styles';
-import Box from '@mui/material/Box';
-import Grid from '@mui/material/Grid';
-import Typography from '@mui/material/Typography';
-import Slider from '@mui/material/Slider';
-import MuiInput from '@mui/material/Input';
-//import VolumeUp from '@mui/icons-material/VolumeUp';
+import { useEffect, useState } from 'react';
+import VerticalCoveSlider from '../VerticalCoveSlider/VerticalCoveSlider';
+import './Hercules.css';
 
-const Input = styled(MuiInput)`
-  width: 42px;
-`;
 
-export default function InputSlider() {
-  const [value, setValue] = React.useState(30);
+const Hercules = () => {
 
-  const handleSliderChange = (event, newValue) => {
-    setValue(newValue);
-  };
+    const [red, setRed] = useState(0);
+    const [grn, setGrn] = useState(0);
+    const [blu, setBlu] = useState(0);
 
-  const handleInputChange = (event) => {
-    setValue(event.target.value === '' ? '' : Number(event.target.value));
-  };
+    useEffect(() => {
+        console.log(`Red: ${red}, Green: ${grn}, Blue: ${blu}`);
+    }, [red, grn, blu]);
 
-  const handleBlur = () => {
-    if (value < 0) {
-      setValue(0);
-    } else if (value > 100) {
-      setValue(100);
-    }
-  };
+    return (
+        <div className="hercules">
 
-  return (
-    <Box sx={{ width: 500 }}>
-      <Typography id="input-slider" gutterBottom>
-        Volume
-      </Typography>
-      <Grid container spacing={2} alignItems="center">
-        <Grid item>
-          Red
-        </Grid>
-        <Grid item xs>
-          <Slider
-            value={typeof value === 'number' ? value : 0}
-            onChange={handleSliderChange}
-            aria-labelledby="input-slider"
-          />
-        </Grid>
-        <Grid item>
-            {value}
-          {/*<Input
-            value={value}
-            size="small"
-            onChange={handleInputChange}
-            onBlur={handleBlur}
-            inputProps={{
-              step: 10,
-              min: 0,
-              max: 100,
-              type: 'number',
-              'aria-labelledby': 'input-slider',
-            }}
-          />*/}
-        </Grid>
-      </Grid>
-    </Box>
-  );
+            <VerticalCoveSlider coveColor="Red" color="#bb0000" setRed={setRed} />
+
+            <VerticalCoveSlider coveColor="Grn" color="#00bb00" setGrn={setGrn} />
+
+            <VerticalCoveSlider coveColor="Blu" color="#0077bb" setBlu={setBlu} />
+
+        </div>
+    );
 }
+
+
+export default Hercules;
