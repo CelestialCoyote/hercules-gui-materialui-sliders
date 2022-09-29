@@ -1,26 +1,15 @@
-import { useState } from 'react';
 import Slider from '@mui/material/Slider';
 import './VerticalCoveSlider.css';
 
 
-const VerticalCoveSlider = ({ coveColor, color, setRed, setGrn, setBlu }) => {
-    const [value, setValue] = useState(0);
+const VerticalCoveSlider = ({ coveColor, color, setLevel, level }) => {
 
-    const handleSliderChange = (event, newValue) => {
-        setValue(newValue);
+    const handleSliderChange = (_event, value) => {
+    //const handleSliderChange = (value) => {
+        setLevel(value);
 
         // Console.log changes as slider moves on selected color.
-        console.log(`${coveColor} sliderValue: ${value}`);
-
-        // Want to update the state of each color to be sent to backend.
-        // Not currently working.
-        if (coveColor === "red") {
-            setRed(newValue);
-        } else if (coveColor === "grn") {
-            setGrn(newValue);
-        } else if (coveColor === "blu") {
-            setBlu(newValue);
-        }
+        //console.log(`${coveColor} sliderValue: ${level}`);
     };
 
 
@@ -56,7 +45,7 @@ const VerticalCoveSlider = ({ coveColor, color, setRed, setGrn, setBlu }) => {
                 onChange={handleSliderChange}
             />
 
-            <label className="cove-text">{value}</label>
+            <label className="cove-text">{level}</label>
 
         </div>
 

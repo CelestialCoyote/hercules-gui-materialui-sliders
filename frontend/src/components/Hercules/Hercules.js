@@ -18,11 +18,11 @@ const Hercules = () => {
     return (
         <div className="hercules">
 
-            <VerticalCoveSlider coveColor="Red" color="#bb0000" setRed={setRed} />
+            <VerticalCoveSlider coveColor="Red" color="#bb0000" setLevel={setRed} level={red} />
 
-            <VerticalCoveSlider coveColor="Grn" color="#00bb00" setGrn={setGrn} />
+            <VerticalCoveSlider coveColor="Grn" color="#00bb00" setLevel={setGrn} level={grn} />
 
-            <VerticalCoveSlider coveColor="Blu" color="#0077bb" setBlu={setBlu} />
+            <VerticalCoveSlider coveColor="Blu" color="#0077bb" setLevel={setBlu} level={blu} />
 
         </div>
     );
