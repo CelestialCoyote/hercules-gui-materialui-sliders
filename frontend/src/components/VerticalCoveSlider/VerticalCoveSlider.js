@@ -4,18 +4,37 @@ import './VerticalCoveSlider.css';
 
 const VerticalCoveSlider = ({ coveColor, color, setLevel, level }) => {
 
-    const handleSliderChange = (_event, value) => {
-    //const handleSliderChange = (value) => {
-        setLevel(value);
-
-        // Console.log changes as slider moves on selected color.
-        //console.log(`${coveColor} sliderValue: ${level}`);
-    };
+    //const handleSliderChange = (_event, value) => {
+    //    setLevel(value);
+    //};
 
 
     return (
 
         <div className="cove-slider-group">
+
+            <div className="fade-buttons">
+
+                <button
+                    className="cove-button red-button"
+                    onClick={() => {
+                        setLevel(255);
+                    }}
+                >
+                    {coveColor} On
+                </button>
+
+                <button
+                    className="cove-button red-button"
+                    onClick={() => {
+                        setLevel(0);
+                    }}
+                >
+                    {coveColor} Off
+                </button>
+
+            </div>
+
             <label className="cove-text">{coveColor}</label>
 
             <Slider
@@ -42,7 +61,9 @@ const VerticalCoveSlider = ({ coveColor, color, setLevel, level }) => {
                 min={0}
                 max={255}
                 step={1}
-                onChange={handleSliderChange}
+                value={level}
+                //onChange={handleSliderChange}
+                onChange={(e) => { setLevel(e.target.value); }}
             />
 
             <label className="cove-text">{level}</label>
