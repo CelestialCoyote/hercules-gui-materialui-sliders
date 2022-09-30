@@ -1,8 +1,11 @@
+import { useState } from 'react';
 import Slider from '@mui/material/Slider';
 import './VerticalCoveSlider.css';
 
 
 const VerticalCoveSlider = ({ coveColor, color, setLevel, level }) => {
+
+    const [isOff, setIsOff] = useState(true);
 
     //const handleSliderChange = (_event, value) => {
     //    setLevel(value);
@@ -22,6 +25,15 @@ const VerticalCoveSlider = ({ coveColor, color, setLevel, level }) => {
                     }}
                 >
                     {coveColor} On
+                </button>
+
+                <button
+                    className="cove-button red-button"
+                    onClick={() => {
+                        setLevel(0);
+                    }}
+                >
+                    {coveColor} Off
                 </button>
 
                 <button
@@ -63,7 +75,11 @@ const VerticalCoveSlider = ({ coveColor, color, setLevel, level }) => {
                 step={1}
                 value={level}
                 //onChange={handleSliderChange}
-                onChange={(e) => { setLevel(e.target.value); }}
+                onChange={(e) => {
+                    setLevel(e.target.value);
+                    if (e.target.value > 0) setIsOff(false);
+                    if (e.target.value === 0) setIsOff(true);
+                }}
             />
 
             <label className="cove-text">{level}</label>
