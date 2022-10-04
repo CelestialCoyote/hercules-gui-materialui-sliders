@@ -6,6 +6,7 @@ import './VerticalCoveSlider.css';
 const VerticalCoveSlider = ({ coveColor, color, setLevel, level }) => {
 
     const [isOff, setIsOff] = useState(true);
+    const [temp, setTemp] = useState(0);
 
     //const handleSliderChange = (_event, value) => {
     //    setLevel(value);
@@ -18,7 +19,7 @@ const VerticalCoveSlider = ({ coveColor, color, setLevel, level }) => {
 
             <div className="fade-buttons">
 
-                <button
+                {/*<button
                     className="cove-button red-button"
                     onClick={() => {
                         setLevel(255);
@@ -34,15 +35,27 @@ const VerticalCoveSlider = ({ coveColor, color, setLevel, level }) => {
                     }}
                 >
                     {coveColor} Off
-                </button>
+                </button>*/}
 
                 <button
                     className="cove-button red-button"
                     onClick={() => {
-                        setLevel(0);
+                        if (level > 0) {
+                            setTemp(level);
+                            setLevel(0);
+                            setIsOff(true);
+                        } else {
+                            if (temp === 0) {
+                                setTemp(255);
+                                setLevel(255);
+                            } else {
+                                setLevel(temp);
+                            }
+                            setIsOff(false);
+                        }
                     }}
                 >
-                    {coveColor} Off
+                    {coveColor} {isOff ? "On" : "Off"}
                 </button>
 
             </div>
@@ -78,7 +91,10 @@ const VerticalCoveSlider = ({ coveColor, color, setLevel, level }) => {
                 onChange={(e) => {
                     setLevel(e.target.value);
                     if (e.target.value > 0) setIsOff(false);
-                    if (e.target.value === 0) setIsOff(true);
+                    if (e.target.value === 0) {
+                        setTemp(0);
+                        setIsOff(true);
+                    }
                 }}
             />
 
