@@ -49,25 +49,13 @@ router.post('/colorChangeSlider', (req, res) => {
     try {
         let channelData = req.body;
 
-        // Set color level state with incoming values.
-        stateRed = channelData.redLevel;
-        stateGrn = channelData.grnLevel;
-        stateBlu = channelData.bluLevel;
-        stateWht = channelData.whtLevel;
-        stateMaster = channelData.masterLevel;
-
         if (!channelData)
             return res
                 .status(400)
                 .send('No channelData received.');
 
-        let red = getLevel(channelData.redLevel, channelData.masterLevel);
-        let grn = getLevel(channelData.grnLevel, channelData.masterLevel);
-        let blu = getLevel(channelData.bluLevel, channelData.masterLevel);
-        let wht = getLevel(channelData.whtLevel, channelData.masterLevel);
 
-        //
-        console.log(`From slider: ${stateRed}, ${stateGrn}, ${stateBlu}, ${stateWht}, ${stateMaster}`);
+        console.log(`From slider: Channel- ${channelData.channel}, Level- ${channelData.level}`);
 
         return res
             .status(200)
