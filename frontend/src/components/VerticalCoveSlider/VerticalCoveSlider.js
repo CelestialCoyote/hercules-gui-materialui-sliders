@@ -8,57 +8,30 @@ const VerticalCoveSlider = ({ coveColor, color, setLevel, level }) => {
     const [isOff, setIsOff] = useState(true);
     const [temp, setTemp] = useState(0);
 
-    //const handleSliderChange = (_event, value) => {
-    //    setLevel(value);
-    //};
-
-
     return (
 
         <div className="cove-slider-group">
 
-            <div className="fade-buttons">
-
-                {/*<button
-                    className="cove-button red-button"
-                    onClick={() => {
-                        setLevel(255);
-                    }}
-                >
-                    {coveColor} On
-                </button>
-
-                <button
-                    className="cove-button red-button"
-                    onClick={() => {
+            <button
+                className={isOff ?  "cove-button" : "cove-button-on"}
+                onClick={() => {
+                    if (level > 0) {
+                        setTemp(level);
                         setLevel(0);
-                    }}
-                >
-                    {coveColor} Off
-                </button>*/}
-
-                <button
-                    className="cove-button red-button"
-                    onClick={() => {
-                        if (level > 0) {
-                            setTemp(level);
-                            setLevel(0);
-                            setIsOff(true);
+                        setIsOff(true);
+                    } else {
+                        if (temp === 0) {
+                            setTemp(255);
+                            setLevel(255);
                         } else {
-                            if (temp === 0) {
-                                setTemp(255);
-                                setLevel(255);
-                            } else {
-                                setLevel(temp);
-                            }
-                            setIsOff(false);
+                            setLevel(temp);
                         }
-                    }}
-                >
-                    {coveColor} {isOff ? "On" : "Off"}
-                </button>
-
-            </div>
+                        setIsOff(false);
+                    }
+                }}
+            >
+                {coveColor} {isOff ? "On" : "Off"}
+            </button>
 
             <label className="cove-text">{coveColor}</label>
 
@@ -87,7 +60,6 @@ const VerticalCoveSlider = ({ coveColor, color, setLevel, level }) => {
                 max={255}
                 step={1}
                 value={level}
-                //onChange={handleSliderChange}
                 onChange={(e) => {
                     setLevel(e.target.value);
                     if (e.target.value > 0) setIsOff(false);

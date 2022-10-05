@@ -15,19 +15,36 @@
 
 .cove-button {
     background-color: black;
-    border: 2px solid #aa5500;
+    border: 2px solid red;
     border-radius: 0.75rem;
-    color: #aa5500;
+    color: red;
     font-size: 1.25rem;
-    height: 2.5rem;
+    height: 3.5rem;
+    margin: 0;
+    padding: 0.25rem;
+    width: 7.0rem;
+}
+
+.cove-button-on {
+    background-color: red;
+    border: 2px solid red;
+    border-radius: 0.75rem;
+    color: black;
+    font-size: 1.25rem;
+    height: 3.5rem;
     margin: 0;
     padding: 0.25rem;
     width: 7.0rem;
 }
 
 .cove-button:hover {
-    border: 2px solid #aa8800;
-    color: #aa8800;
+    border: 2px solid pink;
+    color: pink;
+}
+
+.cove-button-on:hover {
+    background-color: pink;
+    border: 2px solid pink;
 }
 
 .cove-text {
